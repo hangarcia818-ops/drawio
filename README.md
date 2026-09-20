@@ -1,51 +1,83 @@
-# draw.io
+# Topología de monitoreo PNETLab
 
-## About
+Generador offline de diagramas de una red de laboratorio con sedes en Bogotá,
+Cali y Medellín. Una única fuente Python produce archivos draw.io, SVG y GraphML.
+No se conecta a los equipos ni modifica su configuración.
 
-draw.io is a configurable diagramming and whiteboarding application, jointly owned and developed by draw.io Ltd (previously named JGraph) and draw.io AG. We also run a production deployment at https://app.diagrams.net.
+![Topología lógica del laboratorio](ejemplos/laboratorio.svg)
 
-## License
+## Inicio rápido
 
-The source code in this repository is licensed under the [Apache License 2.0](LICENSE).
+Requiere Python 3.8 o superior. No necesita paquetes externos ni Internet.
+Desde la carpeta del proyecto:
 
-The icon sets, stencil libraries, and diagram templates are provided under the following terms:
+```bash
+python3 generar_topologia.py
+```
 
-> The icon sets and stencil libraries included in this software, and any derivatives thereof (including conversions to other formats, traced reproductions, substantially similar visual representations, or AI-generated images created using these icons as reference or training input), may not be used as software assets in, distributed for use with, or incorporated into Atlassian products or products distributed through the Atlassian marketplace or plugin ecosystem, without explicit written permission.
->
-> This restriction does not apply to end-user diagram output (such as exported images or documents) created using this software.
+En Windows también puedes usar `py generar_topologia.py`.
+El comando crea la carpeta `diagramas/` con tres archivos:
 
-Some icons are originally defined by third-party copyright holders; we have verified that all original licenses permit use in this project. Additional third-party JavaScript libraries are included, all with licenses compatible with Apache 2.0 (no GPL or AGPL).
+| Archivo | Uso |
+| --- | --- |
+| `laboratorio.drawio` | Equipos, etiquetas y conexiones editables en draw.io. |
+| `laboratorio.svg` | Visualización en navegador o edición vectorial. |
+| `laboratorio.graphml` | Intercambio de nodos y conexiones entre editores compatibles. |
 
-We make no copyright claim on diagrams you create with this software.
+GraphML conserva etiquetas y atributos de posición, pero cada editor puede
+interpretar el diseño de forma diferente. Ningún formato garantiza la misma
+apariencia en todos los programas.
 
-## Contributions
+## Comandos
 
-We do not accept pull requests. The project is developed entirely by the core team.
+```bash
+# Consultar opciones
+python3 generar_topologia.py --help
 
-## Scope
+# Generar en otra carpeta
+python3 generar_topologia.py --salida mi_topologia
 
-draw.io is a diagramming and whiteboarding application. It is not an SVG editor. SVG export is intended for embedding in web pages, not for editing in other tools.
+# Regenerar archivos existentes (reemplaza cualquier edición manual)
+python3 generar_topologia.py --sobrescribir
 
-Note that draw.io does not support real-time collaborative editing in this version, currently.
+# Actualizar los ejemplos incluidos en el repositorio
+python3 generar_topologia.py --salida ejemplos --sobrescribir
+```
 
-For issues or questions about the editor in any draw.io product, the issue tracker and discussions here are a good starting point.
+## Contenido
 
-## Running
+| Ruta | Descripción |
+| --- | --- |
+| `generar_topologia.py` | Datos del laboratorio y exportadores, sin dependencias. |
+| `ejemplos/` | Diagramas ya generados y versionados. |
+| `docs/TOPOLOGIA.md` | Alcance, datos confirmados y limitaciones. |
+| `docs/GITHUB.md` | Pasos para subir el proyecto a GitHub. |
+| `diagramas/` | Salida local; excluida de Git. |
 
-Options for running draw.io:
+## Personalizar la red
 
-- Fork this repository and [publish to GitHub Pages](https://help.github.com/categories/github-pages-basics/) for a [fully functional editor](https://jgraph.github.io/drawio/src/main/webapp/index.html) (without integrations)
-- Use the [official Docker image](https://github.com/jgraph/docker-drawio)
-- Download [draw.io Desktop](https://get.diagrams.net)
+Edita las llamadas a `nodo(...)` y `enlace(...)` que llenan `NODOS` y `ENLACES`:
 
-Packaged .war files are available on the [releases page](https://github.com/jgraph/draw.io/releases).
+```python
+nodo('equipo_nuevo', 'Nombre del equipo\nIP: por definir', 100, 1800)
+enlace('swbog', 'equipo_nuevo', 'Conexión de laboratorio')
+```
 
-## Supported Browsers
+Cada identificador de nodo debe ser único; los enlaces deben utilizar
+identificadores existentes. Las coordenadas y dimensiones determinan la
+disposición en draw.io y SVG. Si añades equipos fuera del lienzo actual,
+amplía también las dimensiones del lienzo en los exportadores.
 
-Chrome 123+, Firefox 120+, Safari 17.5+, Opera 109+, Edge 123+, WebView Android 137+, Safari iOS 18.5+.
+## Abrir los resultados
 
-## Trademark
+- draw.io: abre `ejemplos/laboratorio.drawio` como archivo de diagrama.
+- Navegador: abre `ejemplos/laboratorio.svg`.
+- Editor compatible con GraphML: importa `ejemplos/laboratorio.graphml`.
 
-draw.io is a registered EU trademark (#018062448).
+## Estado del proyecto
 
-Do not use the draw.io name or logo in ways that suggest affiliation with, endorsement by, or sponsorship by draw.io. Do not use draw.io logos for your own business, product, project, domain, or social media presence. Do not modify the draw.io logos. Use of draw.io trademarks requires prior written permission.
+Los diagramas documentan el último estado compartido del laboratorio; no son
+una comprobación de conectividad ni de disponibilidad. Consulta
+[los detalles de la topología](docs/TOPOLOGIA.md).
+
+No se ha seleccionado una licencia de distribución para este proyecto.
