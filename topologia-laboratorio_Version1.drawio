@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2026-09-20T00:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="topologia" name="Topología PNETLab">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="title" />
+        <mxCell id="canvas" parent="title" />
+
+        <mxCell id="titulo" value="Topología de monitoreo PNETLab" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;" vertex="1" parent="canvas">
+          <mxGeometry x="420" y="20" width="520" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bog" value="BOG_R1&#xa;OSPF ID: 1.1.1.1&#xa;V10: 192.168.6.2/25&#xa;V20: 192.168.4.2/24&#xa;V30: 192.168.0.2/23" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="500" y="180" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bkp" value="BACKUP_BOG&#xa;OSPF ID: 2.2.2.2&#xa;V10: 192.168.6.3/25&#xa;V20: 192.168.4.3/24&#xa;V30: 192.168.0.3/23" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="980" y="180" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cali" value="CALI_R2&#xa;OSPF ID: 4.4.4.4&#xa;V10: 192.168.7.65/27&#xa;V20: 192.168.5.1/24&#xa;V30: 192.168.2.1/23" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="80" y="470" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="med" value="MED_R4&#xa;OSPF ID: 3.3.3.3&#xa;V10: 192.168.7.97/28&#xa;V20: 192.168.7.1/26&#xa;V30: 192.168.6.129/25" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="980" y="470" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="swbog" value="SW_BOG&#xa;Capa 2&#xa;Gestión: VLAN 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="500" y="470" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="swcali" value="SW_CALI&#xa;Capa 2&#xa;SVI: 192.168.7.66/27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="80" y="720" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="swmed" value="SW_MED&#xa;Capa 2&#xa;SVI: 192.168.7.98/28" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="980" y="720" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="srv" value="Servidor Ubuntu&#xa;ens37: 192.168.6.10/25&#xa;Nagios, Prometheus, Grafana&#xa;Node/SNMP Exporter, GLPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="500" y="720" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nat" value="NAT VMware / Internet&#xa;Gateway registrado: 172.16.154.2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="500" y="960" width="210" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vbog" value="BOGOTÁ&#xa;VLAN 10 / 20 / 30&#xa;DHCP: BOG_R1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="500" y="1120" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vcali" value="CALI&#xa;VLAN 10 / 20 / 30&#xa;DHCP: CALI_R2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="80" y="1120" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vmed" value="MEDELLÍN&#xa;VLAN 10 / 20 / 30&#xa;DHCP: MED_R4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#64748B;fontSize=12;" vertex="1" parent="canvas">
+          <mxGeometry x="980" y="1120" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge1" value="10.10.10.24/30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="bog" target="bkp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge2" value="10.10.10.0/30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="bog" target="cali">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge3" value="10.10.10.4/30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="bog" target="med">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge4" value="10.10.10.8/30 | OSPF área 0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="cali" target="med">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge5" value="e0/3 ↔ e0/0 | trunk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="bog" target="swbog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge6" value="e0/3 ↔ e0/1 | trunk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="bkp" target="swbog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge7" value="e0/2 ↔ e0/0 | trunk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="cali" target="swcali">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge8" value="e0/2 ↔ e0/0 | trunk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="med" target="swmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge9" value="LAB / ens37 | VLAN 10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="swbog" target="srv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge10" value="ens33 | Internet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="srv" target="nat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge11" value="VLAN 10,20,30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="swbog" target="vbog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge12" value="VLAN 10,20,30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="swcali" target="vcali">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge13" value="VLAN 10,20,30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;whiteSpace=wrap;html=1;endArrow=none;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="canvas" source="swmed" target="vmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
